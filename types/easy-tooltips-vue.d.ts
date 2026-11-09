@@ -20,7 +20,7 @@ export interface EasyTooltipProps extends EasyTooltipOptions {
   text?: string | number
 }
 
-export interface EasyTooltipEmits {
+export type EasyTooltipEmits = {
   open: (detail: TooltipEventDetail) => void
   close: (detail: TooltipEventDetail) => void
   move: (detail: TooltipEventDetail) => void

@@ -1,6 +1,6 @@
 {
   "name": "easy-tooltips-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue 3 component and directive for easy-tooltips, with slot content and reactive options.",
   "author": "Ewan Howell <ewanhowell5195>",
   "license": "MPL-2.0",
