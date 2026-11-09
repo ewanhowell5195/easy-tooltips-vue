@@ -100,6 +100,7 @@ These are props on `<EasyTooltip>`, and keys of the `v-tooltip` object.
 | `tooltip-class` | Classes for the tooltip, in any form Vue's `class` accepts. In a `v-tooltip` object, use `tooltipClass`. |
 | `tooltip-style` | Styles for the tooltip, in any form Vue's `style` accepts. In a `v-tooltip` object, use `tooltipStyle`. |
 | `hold` | Whether to stay open while the trigger is pressed. See [Holding while interacting](#holding-while-interacting). |
+| `dismiss` | Whether to hide when the trigger is clicked. See [Dismissing on click](#dismissing-on-click). |
 | `background` | A background image or gradient. Takes priority over `--easy-tooltip-background`. |
 | `border` | A border image or gradient. Takes priority over `--easy-tooltip-border`. |
 | `disabled` | Turns the tooltip off. If it is showing, it hides. |
@@ -169,6 +170,23 @@ Set `hold` to turn it on for anything else, and `:hold="false"` to turn it off f
 ```
 
 The tooltip hides when you release, unless the pointer is back over the trigger by then.
+
+### Dismissing on click
+`dismiss` hides the tooltip when its trigger is clicked, and keeps it hidden until the pointer leaves the trigger. It takes priority over `hold`. Touch is not affected, since a tap is how a tooltip is shown there.
+
+```vue
+<EasyTooltip text="Copy" dismiss>
+  <button>Copy</button>
+</EasyTooltip>
+```
+
+To turn it on for every tooltip, use `setTooltipDefaults`. `:dismiss="false"` then turns it off for one:
+
+```js
+import { setTooltipDefaults } from "easy-tooltips-vue"
+
+setTooltipDefaults({ dismiss: true })
+```
 
 ## Events
 

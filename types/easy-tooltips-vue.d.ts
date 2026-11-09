@@ -11,6 +11,7 @@ export interface EasyTooltipOptions {
   tooltipClass?: string | unknown[] | Record<string, unknown>
   tooltipStyle?: StyleValue
   hold?: boolean
+  dismiss?: boolean
   background?: string
   border?: string
   disabled?: boolean
@@ -29,6 +30,8 @@ export type EasyTooltipEmits = {
 export type TooltipDirectiveValue = string | number | boolean | null | undefined | (EasyTooltipOptions & { text?: string | number | boolean | null })
 
 export const vTooltip: ObjectDirective<HTMLElement, TooltipDirectiveValue>
+
+export function setTooltipDefaults(options?: Pick<EasyTooltipOptions, "dismiss">): void
 
 declare const EasyTooltip: DefineComponent<EasyTooltipProps, {}, {}, {}, {}, {}, {}, EasyTooltipEmits>
 

@@ -13,7 +13,7 @@ function styleText(value) {
 
 function tooltipAttrs(options, src) {
   const on = !options.disabled
-  const { text, hold } = options
+  const { text, hold, dismiss } = options
   const hasText = text != null && text !== "" && text !== false
   return {
     "data-easy-tooltip": on && !src && hasText ? String(text) : undefined,
@@ -23,9 +23,16 @@ function tooltipAttrs(options, src) {
     "data-easy-tooltip-class": on && normalizeClass(options.tooltipClass) || undefined,
     "data-easy-tooltip-style": on && styleText(options.tooltipStyle) || undefined,
     "data-easy-tooltip-hold": !on || hold == null ? undefined : hold ? "" : "false",
+    "data-easy-tooltip-dismiss": !on || dismiss == null ? undefined : dismiss ? "" : "false",
     "data-easy-tooltip-background": on && options.background || undefined,
     "data-easy-tooltip-border": on && options.border || undefined
   }
+}
+
+export function setTooltipDefaults(options = {}) {
+  const { dismiss } = options
+  if (dismiss == null) document.documentElement.removeAttribute("data-easy-tooltip-dismiss")
+  else document.documentElement.setAttribute("data-easy-tooltip-dismiss", dismiss ? "" : "false")
 }
 
 function applyDirective(el, { value }) {
@@ -60,6 +67,7 @@ export default {
     tooltipClass: [String, Array, Object],
     tooltipStyle: [String, Array, Object],
     hold: { type: Boolean, default: undefined },
+    dismiss: { type: Boolean, default: undefined },
     background: String,
     border: String,
     disabled: Boolean

@@ -29,7 +29,7 @@
     "build": "node build.js"
   },
   "dependencies": {
-    "easy-tooltips": "^3.5.6"
+    "easy-tooltips": "^3.6.0"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
